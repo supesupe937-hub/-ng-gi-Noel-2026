@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ông Già Noel Gõ Cửa - Đặt Lịch Giao Quà & Tổ Chức Giáng Sinh</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: #FFFBF7;
+      color: #2D1E1E;
+      overflow-x: hidden;
+    }
+    .font-festive {
+      font-family: 'Playfair Display', serif;
+    }
+    /* Snowfall animation */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: #ffffff;
+      user-select: none;
+      pointer-events: none;
+      z-index: 40;
+      text-shadow: 0 0 6px rgba(185, 28, 28, 0.25);
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.9; }
+      100% { transform: translateY(105vh) rotate(360deg); opacity: 0.2; }
+    }
+    .hero-pattern {
+      background: radial-gradient(circle at top right, #991B1B 0%, #7F1D1D 45%, #450A0A 100%);
+    }
+    .gold-border {
+      border-color: #D97706;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-red-700 selection:text-white">
+
+  <!-- Snowflakes container -->
+  <div id="snow-container" aria-hidden="true"></div>
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-red-100 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5">
+        <span class="text-2xl">🎅</span>
+        <div>
+          <span class="font-festive font-bold text-lg sm:text-xl text-red-800 block leading-none">Ông Già Noel Gõ Cửa</span>
+          <span class="text-[11px] text-amber-700 font-medium tracking-wide">Dịch vụ Giáng sinh tận nhà</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-stone-700">
+        <a href="#goi-dich-vu" class="hover:text-red-700 transition">Gói dịch vụ</a>
+        <a href="#dat-lich" class="hover:text-red-700 transition">Đặt lịch ngay</a>
+        <a href="#lich-da-dat" class="hover:text-red-700 transition">Lịch của tôi <span id="nav-badge" class="ml-1 px-1.5 py-0.5 text-xs bg-red-100 text-red-700 rounded-full font-bold">0</span></a>
+        <a href="#faq" class="hover:text-red-700 transition">Hỏi đáp</a>
+      </nav>
+      <a href="#dat-lich" class="bg-red-700 hover:bg-red-800 text-white text-sm font-semibold px-4 py-2 rounded-full shadow transition">
+        Đặt Lịch Ngay
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-pattern text-white relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20 grid lg:grid-cols-12 gap-10 items-center relative z-10">
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 bg-white/15 border border-amber-300/40 px-3.5 py-1.5 rounded-full text-xs sm:text-sm text-amber-200 font-medium">
+          <span>✨</span> Mùa Giáng Sinh 2026 • Nhận lịch từ 15/12 – 25/12
+        </div>
+        <h1 class="font-festive text-3xl sm:text-5xl font-extrabold leading-tight text-white">
+          Mang Phép Màu Giáng Sinh &amp; Nụ Cười Của Bé Đến Tận Cửa Nhà
+        </h1>
+        <p class="text-red-100 text-base sm:text-lg leading-relaxed max-w-2xl">
+          Ông Già Noel hóa trang chuyên nghiệp, giọng nói ấm áp, giao lưu kể chuyện, dặn dò bé chăm ngoan và trao tận tay món quà bất ngờ đúng giờ hẹn.
+        </p>
+        <div class="flex flex-wrap gap-4 pt-2">
+          <a href="#dat-lich" class="bg-amber-400 hover:bg-amber-300 text-red-950 font-bold px-6 py-3.5 rounded-xl shadow-lg transition flex items-center gap-2">
+            <span>🎄</span> Đặt Lịch Ông Già Noel
+          </a>
+          <a href="#goi-dich-vu" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-6 py-3.5 rounded-xl transition">
+            Xem Bảng Giá Gói
+          </a>
+        </div>
+        <div class="grid grid-cols-3 gap-4 pt-4 border-t border-white/15 max-w-lg text-sm">
+          <div>
+            <div class="text-xl sm:text-2xl font-bold text-amber-300">100%</div>
+            <div class="text-red-100 text-xs">Đúng giờ hẹn</div>
+          </div>
+          <div>
+            <div class="text-xl sm:text-2xl font-bold text-amber-300">500+</div>
+            <div class="text-red-100 text-xs">Gia đình hài lòng</div>
+          </div>
+          <div>
+            <div class="text-xl sm:text-2xl font-bold text-amber-300">4.9/5★</div>
+            <div class="text-red-100 text-xs">Đánh giá dịch vụ</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Highlight Card -->
+      <div class="lg:col-span-5">
+        <div class="bg-white text-stone-800 rounded-2xl p-6 sm:p-7 shadow-2xl border-2 border-amber-400 relative">
+          <div class="absolute -top-3.5 right-6 bg-emerald-700 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+            Cam kết trang phục chuẩn Bắc Cực
+          </div>
+          <div class="text-center mb-5">
+            <div class="text-5xl mb-2">🎅🎁🦌</div>
+            <h2 class="font-festive text-xl font-bold text-red-800">Quy Trình 3 Bước Đơn Giản</h2>
+            <p class="text-xs text-stone-500 mt-1">Đặt lịch chỉ mất 60 giây</p>
+          </div>
+          <ol class="space-y-4 text-sm">
+            <li class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-full bg-red-100 text-red-800 font-bold flex items-center justify-center shrink-0">1</span>
+              <div>
+                <p class="font-semibold text-stone-900">Chọn gói &amp; khung giờ mong muốn</p>
+                <p class="text-stone-500 text-xs">Hỗ trợ quà phụ huynh chuẩn bị sẵn hoặc trọn gói quà từ chúng tôi.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-full bg-red-100 text-red-800 font-bold flex items-center justify-center shrink-0">2</span>
+              <div>
+                <p class="font-semibold text-stone-900">Gửi lời nhắn bí mật cho bé</p>
+                <p class="text-stone-500 text-xs">Ông Già Noel sẽ đọc tên bé, khen ngợi thành tích và dặn dò riêng.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-full bg-red-100 text-red-800 font-bold flex items-center justify-center shrink-0">3</span>
+              <div>
+                <p class="font-semibold text-stone-900">Gõ cửa bất ngờ &amp; Chụp ảnh kỷ niệm</p>
+                <p class="text-stone-500 text-xs">Tạo khoảnh khắc Giáng sinh đáng nhớ cho cả gia đình.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Packages -->
+  <section id="goi-dich-vu" class="py-16 max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">Bảng Giá Minh Bạch</span>
+      <h2 class="font-festive text-3xl sm:text-4xl font-bold text-red-900 mt-3">Các Gói Dịch Vụ Ông Già Noel</h2>
+      <p class="text-stone-600 text-sm sm:text-base mt-2">Chọn gói phù hợp nhất với gia đình, lớp học hoặc buổi tiệc Giáng sinh của bạn.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-7">
+      <!-- Package 1 -->
+      <div class="bg-white rounded-2xl border border-stone-200 p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl">🎁</span>
+            <span class="text-xs font-semibold bg-stone-100 text-stone-700 px-2.5 py-1 rounded-full">15 – 20 phút</span>
+          </div>
+          <h3 class="text-xl font-bold text-stone-900">Gói Cơ Bản</h3>
+          <p class="text-xs text-stone-500 mt-1">Phụ huynh tự chuẩn bị quà tặng sẵn tại nhà</p>
+          <div class="my-5">
+            <span class="text-3xl font-extrabold text-red-700">250.000đ</span>
+            <span class="text-xs text-stone-500">/ lượt</span>
+          </div>
+          <ul class="space-y-2.5 text-sm text-stone-700 mb-6">
+            <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Ông Già Noel giao quà tận tay (tối đa 2 bé)</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Đọc thư khen &amp; dặn dò riêng theo yêu cầu</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Chụp ảnh lưu niệm cùng gia đình</li>
+            <li class="flex items-center gap-2 text-stone-400"><span>✕</span> Không bao gồm hộp quà</li>
+          </ul>
+        </div>
+        <button onclick="selectPackage('basic')" class="w-full py-2.5 px-4 rounded-xl border-2 border-red-700 text-red-700 font-semibold hover:bg-red-700 hover:text-white transition">
+          Chọn Gói Này
+        </button>
+      </div>
+
+      <!-- Package 2 (Popular) -->
+      <div class="bg-white rounded-2xl border-2 border-amber-500 p-6 shadow-xl relative flex flex-col justify-between transform md:-translate-y-2">
+        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-red-700 to-amber-600 text-white text-xs font-bold px-4 py-1 rounded-full shadow">
+          ⭐ ĐƯỢC CHỌN NHIỀU NHẤT
+        </div>
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl">🎄</span>
+            <span class="text-xs font-semibold bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full">25 – 30 phút</span>
+          </div>
+          <h3 class="text-xl font-bold text-stone-900">Gói Trọn Gói</h3>
+          <p class="text-xs text-stone-500 mt-1">Tặng kèm quà Giáng sinh &amp; hoạt náo vui nhộn</p>
+          <div class="my-5">
+            <span class="text-3xl font-extrabold text-red-700">450.000đ</span>
+            <span class="text-xs text-stone-500">/ lượt</span>
+          </div>
+          <ul class="space-y-2.5 text-sm text-stone-700 mb-6">
+            <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Tặng kèm 01 phần quà Giáng sinh &amp; thiệp viết tay</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Kể chuyện Bắc Cực &amp; đố vui có thưởng cho bé</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Hát mừng Giáng sinh &amp; chụp ảnh không giới hạn</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Miễn phí thêm quà phụ huynh gửi kèm</li>
+          </ul>
+        </div>
+        <button onclick="selectPackage('full')" class="w-full py-3 px-4 rounded-xl bg-red-700 hover:bg-red-800 text-white font-bold shadow transition">
+          Chọn Gói Này
+        </button>
+      </div>
+
+      <!-- Package 3 -->
+      <div class="bg-white rounded-2xl border border-stone-200 p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl">🏫</span>
+            <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full">45 – 60 phút</span>
+          </div>
+          <h3 class="text-xl font-bold text-stone-900">Gói Sự Kiện / Trường Học</h3>
+          <p class="text-xs text-stone-500 mt-1">Dành cho lớp học, chung cư, công ty, tiệc lớn</p>
+          <div class="my-5">
+            <span class="text-3xl font-extrabold text-red-700">950.000đ</span>
+            <span class="text-xs text-stone-500">/ sự kiện</span>
+          </div>
+          <ul class="space-y-2.5 text-sm text-stone-700 mb-6">
+            <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Ông Già Noel + 01 Công Chúa Tuyết hoạt náo</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Tổ chức mini-game tập thể &amp; phát quà theo danh sách</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Tặng túi kẹo Giáng sinh cho tối đa 25 bé</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Hỗ trợ âm thanh loa kéo mini nếu cần</li>
+          </ul>
+        </div>
+        <button onclick="selectPackage('event')" class="w-full py-2.5 px-4 rounded-xl border-2 border-emerald-700 text-emerald-800 font-semibold hover:bg-emerald-700 hover:text-white transition">
+          Chọn Gói Này
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Form & Summary -->
+  <section id="dat-lich" class="py-14 bg-red-50/60 border-y border-red-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs font-bold uppercase tracking-wider text-red-700 bg-red-100 px-3 py-1 rounded-full">Đặt Lịch Trực Tuyến</span>
+        <h2 class="font-festive text-3xl sm:text-4xl font-bold text-red-900 mt-3">Điền Thông Tin Lịch Hẹn</h2>
+        <p class="text-stone-600 text-sm mt-2">Các khung giờ tối 24/12 thường hết sớm, ba mẹ hãy đặt trước để giữ giờ đẹp nhé!</p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8 items-start">
+        <!-- Form -->
+        <form id="booking-form" class="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-red-100 space-y-5">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase text-stone-600 mb-1.5">Họ tên phụ huynh *</label>
+              <input type="text" id="parentName" required placeholder="VD: Nguyễn Thị Lan"
+                class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase text-stone-600 mb-1.5">Số điện thoại liên hệ *</label>
+              <input type="tel" id="phone" required placeholder="VD: 0912 345 678"
+                class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none text-sm" />
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase text-stone-600 mb-1.5">Tên gọi ở nhà của bé *</label>
+              <input type="text" id="kidName" required placeholder="VD: Bé Bông, Bé Sóc"
+                class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase text-stone-600 mb-1.5">Số lượng bé tham gia</label>
+              <input type="number" id="kidCount" min="1" max="50" value="1"
+                class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none text-sm" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase text-stone-600 mb-1.5">Địa chỉ giao quà *</label>
+            <input type="text" id="address" required placeholder="Số nhà, tên đường, phường/xã, quận/huyện..."
+              class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none text-sm" />
+          </div>
+
+          <!-- Quick Date Selection -->
+          <div>
+            <label class="block text-xs font-bold uppercase text-stone-600 mb-1.5">Ngày hẹn Ông Già Noel *</label>
+            <div class="flex flex-wrap gap-2 mb-2.5">
+              <button type="button" onclick="setQuickDate('2026-12-23')" class="quick-date-btn text-xs px-3 py-1.5 rounded-lg border border-stone-300 hover:border-red-600 hover:bg-red-50 font-medium transition">23/12 (Thứ 4)</button>
+              <button type="button" onclick="setQuickDate('2026-12-24')" class="quick-date-btn text-xs px-3 py-1.5 rounded-lg border border-amber-400 bg-amber-50 text-amber-900 hover:bg-amber-100 font-semibold transition">🔥 24/12 Đêm Noel</button>
+              <button type="button" onclick="setQuickDate('2026-12-25')" class="quick-date-btn text-xs px-3 py-1.5 rounded-lg border border-stone-300 hover:border-red-600 hover:bg-red-50 font-medium transition">🎄 25/12 Giáng Sinh</button>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <input type="date" id="bookingDate" value="2026-12-24" required
+                class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none text-sm" />
+              <select id="timeSlot" required
+                class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none text-sm bg-white">
+                <option value="09:00 - 11:00">Buổi sáng (09:00 – 11:00)</option>
+                <option value="14:00 - 16:30">Buổi chiều (14:00 – 16:30)</option>
+                <option value="17:30 - 19:00">Đầu tối (17:30 – 19:00)</option>
+                <option value="19:00 - 20:30" selected>Giờ vàng (19:00 – 20:30)</option>
+                <option value="20:30 - 22:00">Tối muộn (20:30 – 22:00)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Package & Gift -->
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase text-stone-600 mb-1.5">Gói dịch vụ *</label>
+              <select id="packageSelect"
+                class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none text-sm bg-white">
+                <option value="basic">Gói Cơ Bản (250.000đ)</option>
+                <option value="full" selected>Gói Trọn Gói (450.000đ)</option>
+                <option value="event">Gói Sự Kiện / Trường Học (950.000đ)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase text-stone-600 mb-1.5">Ngân sách chuẩn bị quà thêm</label>
+              <select id="giftBudget"
+                class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none text-sm bg-white">
+                <option value="0">Tự chuẩn bị quà tại nhà (0đ)</option>
+                <option value="150000">Set Gấu Bông / Đồ Chơi Nhỏ (+150.000đ)</option>
+                <option value="300000">Set Lego / Sách Truyện Cao Cấp (+300.000đ)</option>
+                <option value="500000">Set Quà Đặc Biệt Theo Yêu Cầu (+500.000đ)</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase text-stone-600 mb-1.5">Lời nhắn bí mật để Ông Già Noel dặn dò bé</label>
+            <textarea id="secretNote" rows="3" placeholder="VD: Khen bé Bông năm nay biết tự giác đánh răng, ăn nhiều rau hơn và chúc bé học giỏi..."
+              class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 focus:border-red-600 focus:ring-2 focus:ring-red-100 outline-none text-sm"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-red-700 to-red-800 hover:from-red-800 hover:to-red-900 text-white font-bold text-base shadow-lg transition flex items-center justify-center gap-2">
+            <span>🎅</span> Xác Nhận Đặt Lịch Ông Già Noel
+          </button>
+        </form>
+
+        <!-- Live Cost Calculator & Confirmation Card -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="bg-white rounded-2xl p-6 shadow-md border border-amber-200">
+            <h3 class="font-festive text-xl font-bold text-red-900 border-b border-stone-100 pb-3 mb-4 flex items-center justify-between">
+              <span>Tạm Tính Chi Phí</span>
+              <span class="text-xs font-sans font-semibold bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full">Thanh toán khi nhận quà</span>
+            </h3>
+            <div class="space-y-3 text-sm">
+              <div class="flex justify-between text-stone-600">
+                <span id="summary-pkg-name">Gói Trọn Gói</span>
+                <span id="summary-pkg-price" class="font-semibold text-stone-900">450.000đ</span>
+              </div>
+              <div class="flex justify-between text-stone-600">
+                <span>Quà tặng chuẩn bị thêm</span>
+                <span id="summary-gift-price" class="font-semibold text-stone-900">0đ</span>
+              </div>
+              <div class="flex justify-between text-stone-600">
+                <span>Phụ phí cao điểm (24/12 &amp; 25/12)</span>
+                <span id="summary-peak-price" class="font-semibold text-amber-700">+50.000đ</span>
+              </div>
+              <div class="border-t border-dashed border-stone-200 pt-3 flex justify-between items-center">
+                <span class="font-bold text-stone-800">Tổng cộng dự kiến</span>
+                <span id="summary-total" class="text-2xl font-extrabold text-red-700">500.000đ</span>
+              </div>
+            </div>
+            <div class="mt-4 bg-amber-50/80 border border-amber-200 rounded-xl p-3 text-xs text-amber-900 leading-relaxed">
+              💡 <strong>Lưu ý:</strong> Phụ phí 50.000đ chỉ áp dụng cho ngày cao điểm 24/12 và 25/12. Nếu ba mẹ tự chuẩn bị quà, Ông Già Noel sẽ liên hệ trước 15 phút để nhận quà kín đáo trước cổng.
+            </div>
+          </div>
+
+          <!-- Latest Booking Ticket -->
+          <div id="confirmation-box" class="hidden bg-gradient-to-br from-emerald-900 to-emerald-800 text-white rounded-2xl p-6 shadow-xl border-2 border-amber-400">
+            <div class="flex items-center justify-between border-b border-white/15 pb-3 mb-4">
+              <div>
+                <span class="text-xs uppercase tracking-wider text-amber-300 font-bold">Đặt lịch thành công!</span>
+                <h4 class="font-festive text-xl font-bold">Thẻ Hẹn Ông Già Noel</h4>
+              </div>
+              <span class="text-3xl">🎟️</span>
+            </div>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span class="text-emerald-200">Mã đơn:</span>
+                <div class="flex items-center gap-2">
+                  <strong id="ticket-code" class="text-amber-300 tracking-wider">NOEL-2026</strong>
+                  <button onclick="copyTicketCode()" class="text-xs bg-white/15 hover:bg-white/25 px-2 py-0.5 rounded transition">Sao chép</button>
+                </div>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-emerald-200">Bé nhận quà:</span>
+                <strong id="ticket-kid">Bé Bông</strong>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-emerald-200">Thời gian:</span>
+                <strong id="ticket-time">19:00 - 20:30 • 24/12/2026</strong>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-emerald-200">Tổng thanh toán:</span>
+                <strong id="ticket-total" class="text-amber-300">500.000đ</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Saved Bookings List -->
+  <section id="lich-da-dat" class="py-16 max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-100 px-3 py-1 rounded-full">Quản Lý Lịch Hẹn</span>
+        <h2 class="font-festive text-3xl font-bold text-red-900 mt-2">Lịch Đã Đặt Của Bạn</h2>
+      </div>
+      <p class="text-xs text-stone-500">Dữ liệu được lưu trực tiếp trên trình duyệt của bạn</p>
+    </div>
+
+    <div id="bookings-list" class="grid md:grid-cols-2 gap-5">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-14 bg-stone-100/70 border-t border-stone-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="font-festive text-3xl font-bold text-center text-red-900 mb-8">Câu Hỏi Thường Gặp</h2>
+      <div class="space-y-3">
+        <details class="bg-white rounded-xl p-5 border border-stone-200 group" open>
+          <summary class="font-bold text-stone-900 cursor-pointer flex justify-between items-center">
+            <span>1. Nếu tôi tự chuẩn bị quà thì gửi cho Ông Già Noel bằng cách nào?</span>
+            <span class="text-red-700 font-bold">+</span>
+          </summary>
+          <p class="text-sm text-stone-600 mt-3 leading-relaxed">
+            Trước giờ hẹn khoảng 15–20 phút, Ông Già Noel sẽ gọi điện cho phụ huynh khi tới đầu ngõ hoặc sảnh chung cư để nhận túi quà bí mật, dán tên bé rồi mới bấm chuông gõ cửa tạo bất ngờ.
+          </p>
+        </details>
+        <details class="bg-white rounded-xl p-5 border border-stone-200">
+          <summary class="font-bold text-stone-900 cursor-pointer flex justify-between items-center">
+            <span>2. Trang phục và ngoại hình Ông Già Noel có giống thật không?</span>
+            <span class="text-red-700 font-bold">+</span>
+          </summary>
+          <p class="text-sm text-stone-600 mt-3 leading-relaxed">
+            100% nhân sự mặc bộ đồ nhung đỏ dày dặn, râu tóc trắng bồng bềnh, đeo kính tròn, thắt lưng da, chuông vàng và túi quà lớn đỏ rực để đảm bảo các bé tin tuyệt đối vào phép màu Giáng sinh.
+          </p>
+        </details>
+        <details class="bg-white rounded-xl p-5 border border-stone-200">
+          <summary class="font-bold text-stone-900 cursor-pointer flex justify-between items-center">
+            <span>3. Tôi có thể thay đổi giờ hẹn hoặc hủy lịch không?</span>
+            <span class="text-red-700 font-bold">+</span>
+          </summary>
+          <p class="text-sm text-stone-600 mt-3 leading-relaxed">
+            Bạn hoàn toàn có thể hủy hoặc đặt lại lịch mới trực tiếp tại mục "Lịch Đã Đặt Của Bạn" trước thời điểm giao quà ít nhất 4 tiếng mà không mất bất kỳ khoản phí nào.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-red-950 text-red-100 py-10 text-center text-sm">
+    <div class="max-w-6xl mx-auto px-4 space-y-2">
+      <div class="text-2xl">🎅🎄❄️</div>
+      <p class="font-festive text-lg font-bold text-white">Ông Già Noel Gõ Cửa</p>
+      <p class="text-xs text-red-300">Hotline điều phối Giáng sinh: 1900 1225 • Hoạt động tại Hà Nội, TP.HCM &amp; Đà Nẵng</p>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 hidden bg-stone-900 text-white text-sm px-4 py-3 rounded-xl shadow-xl border border-amber-400/50"></div>
+
+  <script>
+    const PACKAGES = {
+      basic: { name: 'Gói Cơ Bản (15-20p)', price: 250000 },
+      full: { name: 'Gói Trọn Gói (25-30p)', price: 450000 },
+      event: { name: 'Gói Sự Kiện / Trường Học', price: 950000 }
+    };
+
+    const STORAGE_KEY = 'santa_bookings_2026';
+
+    // Snowfall effect
+    function createSnowflakes() {
+      const container = document.getElementById('snow-container');
+      const flakes = ['❄', '❅', '❆', '•'];
+      for (let i = 0; i < 28; i++) {
+        const flake = document.createElement('div');
+        flake.className = 'snowflake';
+        flake.textContent = flakes[Math.floor(Math.random() * flakes.length)];
+        flake.style.left = Math.random() * 100 + 'vw';
+        flake.style.fontSize = (Math.random() * 12 + 10) + 'px';
+        flake.style.animationDuration = (Math.random() * 7 + 6) + 's';
+        flake.style.animationDelay = (Math.random() * 5) + 's';
+        container.appendChild(flake);
+      }
+    }
+
+    function formatVND(amount) {
+      return amount.toLocaleString('vi-VN') + 'đ';
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.remove('hidden');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => toast.classList.add('hidden'), 3000);
+    }
+
+    function selectPackage(pkgKey) {
+      document.getElementById('packageSelect').value = pkgKey;
+      updateSummary();
+      document.getElementById('dat-lich').scrollIntoView({ behavior: 'smooth' });
+      showToast('Đã chọn ' + PACKAGES[pkgKey].name);
+    }
+
+    function setQuickDate(dateStr) {
+      document.getElementById('bookingDate').value = dateStr;
+      updateSummary();
+    }
+
+    function calculateCost() {
+      const pkgKey = document.getElementById('packageSelect').value;
+      const giftBudget = parseInt(document.getElementById('giftBudget').value, 10) || 0;
+      const dateVal = document.getElementById('bookingDate').value;
+      const isPeak = dateVal.endsWith('-12-24') || dateVal.endsWith('-12-25');
+      const peakFee = isPeak ? 50000 : 0;
+      const pkg = PACKAGES[pkgKey];
+      return {
+        pkgName: pkg.name,
+        pkgPrice: pkg.price,
+        giftBudget,
+        peakFee,
+        total: pkg.price + giftBudget + peakFee
+      };
+    }
+
+    function updateSummary() {
+      const cost = calculateCost();
+      document.getElementById('summary-pkg-name').textContent = cost.pkgName;
+      document.getElementById('summary-pkg-price').textContent = formatVND(cost.pkgPrice);
+      document.getElementById('summary-gift-price').textContent = formatVND(cost.giftBudget);
+      document.getElementById('summary-peak-price').textContent = cost.peakFee > 0 ? '+' + formatVND(cost.peakFee) : '0đ';
+      document.getElementById('summary-total').textContent = formatVND(cost.total);
+    }
+
+    function getBookings() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+      } catch {
+        return [];
+      }
+    }
+
+    function saveBookings(list) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+      renderBookings();
+    }
+
+    function formatDisplayDate(isoDate) {
+      if (!isoDate) return '';
+      const [y, m, d] = isoDate.split('-');
+      return `${d}/${m}/${y}`;
+    }
+
+    function renderBookings() {
+      const list = getBookings();
+      const container = document.getElementById('bookings-list');
+      document.getElementById('nav-badge').textContent = list.length;
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="md:col-span-2 bg-white border border-dashed border-stone-300 rounded-2xl p-10 text-center">
+            <div class="text-4xl mb-2">🛷</div>
+            <p class="font-semibold text-stone-700">Chưa có lịch hẹn nào được lưu</p>
+            <p class="text-xs text-stone-500 mt-1">Hãy điền thông tin ở biểu mẫu phía trên để đặt Ông Già Noel cho bé nhé!</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = list.map(item => `
+        <div class="bg-white rounded-2xl p-5 border border-red-100 shadow-sm flex flex-col justify-between gap-4">
+          <div>
+            <div class="flex items-center justify-between gap-2 border-b border-stone-100 pb-3 mb-3">
+              <span class="text-xs font-extrabold tracking-wider text-red-700 bg-red-50 px-2.5 py-1 rounded-lg">${item.code}</span>
+              <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">✓ Đã giữ lịch</span>
+            </div>
+            <h3 class="font-bold text-stone-900 text-base">🎅 Giao quà cho: ${escapeHTML(item.kidName)} (${item.kidCount} bé)</h3>
+            <p class="text-xs text-stone-500 mt-1">Phụ huynh: ${escapeHTML(item.parentName)} • ${escapeHTML(item.phone)}</p>
+            <div class="mt-3 space-y-1.5 text-xs text-stone-700 bg-stone-50 p-3 rounded-xl">
+              <div><strong>Thời gian:</strong> ${item.timeSlot} • Ngày ${formatDisplayDate(item.bookingDate)}</div>
+              <div><strong>Gói dịch vụ:</strong> ${item.pkgName}</div>
+              <div><strong>Địa chỉ:</strong> ${escapeHTML(item.address)}</div>
+              ${item.secretNote ? `<div><strong>Lời nhắn cho bé:</strong> "${escapeHTML(item.secretNote)}"</div>` : ''}
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-2 border-t border-stone-100">
+            <div>
+              <span class="text-[11px] text-stone-400 block">Tổng chi phí</span>
+              <span class="font-extrabold text-red-700 text-base">${formatVND(item.total)}</span>
+            </div>
+            <button onclick="deleteBooking('${item.code}')" class="text-xs font-semibold text-stone-500 hover:text-red-700 px-3 py-1.5 rounded-lg border border-stone-200 hover:border-red-300 transition">
+              Hủy lịch này
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function escapeHTML(str) {
+      return String(str).replace(/[&<>"']/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[m]));
+    }
+
+    function deleteBooking(code) {
+      const updated = getBookings().filter(b => b.code !== code);
+      saveBookings(updated);
+      showToast('Đã hủy lịch hẹn ' + code);
+    }
+
+    function copyTicketCode() {
+      const code = document.getElementById('ticket-code').textContent;
+      navigator.clipboard?.writeText(code);
+      showToast('Đã sao chép mã đơn: ' + code);
+    }
+
+    document.getElementById('booking-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const cost = calculateCost();
+      const code = 'NOEL-' + Math.floor(1000 + Math.random() * 9000);
+      const booking = {
+        code,
+        parentName: document.getElementById('parentName').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        kidName: document.getElementById('kidName').value.trim(),
+        kidCount: document.getElementById('kidCount').value || 1,
+        address: document.getElementById('address').value.trim(),
+        bookingDate: document.getElementById('bookingDate').value,
+        timeSlot: document.getElementById('timeSlot').value,
+        pkgName: cost.pkgName,
+        total: cost.total,
+        secretNote: document.getElementById('secretNote').value.trim(),
+        createdAt: new Date().toISOString()
+      };
+
+      const existing = getBookings();
+      existing.unshift(booking);
+      saveBookings(existing);
+
+      // Show confirmation card
+      document.getElementById('ticket-code').textContent = booking.code;
+      document.getElementById('ticket-kid').textContent = booking.kidName;
+      document.getElementById('ticket-time').textContent = `${booking.timeSlot} • ${formatDisplayDate(booking.bookingDate)}`;
+      document.getElementById('ticket-total').textContent = formatVND(booking.total);
+      const box = document.getElementById('confirmation-box');
+      box.classList.remove('hidden');
+      box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      showToast('🎉 Đặt lịch thành công! Mã đơn: ' + code);
+    });
+
+    ['packageSelect', 'giftBudget', 'bookingDate'].forEach(id => {
+      document.getElementById(id).addEventListener('change', updateSummary);
+    });
+
+    // Init
+    createSnowflakes();
+    updateSummary();
+    renderBookings();
+  </script>
+</body>
+</html>
